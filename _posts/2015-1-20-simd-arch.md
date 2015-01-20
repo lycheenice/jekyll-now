@@ -53,3 +53,16 @@ int main(int argc, char **argv){
 | zebra stripes | are neat      |    $1 |
 
 
+下面为Jekyll中使用Markdown语法的贴图效果：
+
+**效果图**
+
+![效果图](https://raw.githubusercontent.com/lycheenice/lycheenice.github.io/master/images/jekyll-now-theme-screenshot.jpg "效果图")
+
+**我的头像**
+
+![我的头像](https://raw.githubusercontent.com/lycheenice/lycheenice.github.io/master/images/HappyHead.jpg "我的头像")
+
+**大尺寸图像**
+
+![大尺寸图像](http://p2009c.zbjimg.com/task/2009-12/12/194136/5womb6ci.jpg "大尺寸图像")
