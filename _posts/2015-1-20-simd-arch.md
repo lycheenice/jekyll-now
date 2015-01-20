@@ -46,13 +46,6 @@ int main(int argc, char **argv){
 
 
 
-| Tables        | Are           | Cool  |
-| ------------- |:-------------:| -----:|
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
-
-
 下面为Jekyll中使用Markdown语法的贴图效果：
 
 **效果图**
