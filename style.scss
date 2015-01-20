@@ -119,10 +119,13 @@ strong, b {
 
 img {
   margin-left: -30px;
+  margin-right: -30px;
+
   padding: 0; 
   border: 0;
 
-  max-width: 740px;
+  max-width: 100%;
+  width: auto;
   height: auto;
   text-align: center;
   vertical-align: middle;
