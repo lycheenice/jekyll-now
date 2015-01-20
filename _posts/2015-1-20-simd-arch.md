@@ -25,6 +25,7 @@ ADD EAX, 20  ;将寄存器EAX和立即数20相加，结果存放到EAX中
 
 int main(int argc, char **argv){
   int val1 = atoi(argv[1]);
+  val1 = val1 * 2;
   printf("I will get %d %s",val1%MAX, argv[2]);
   return 0;
 }
