@@ -8,10 +8,14 @@
   box-shadow: 3px 3px rgba(0,0,0,0.1);
   margin: 20px 0 20px 0;
   overflow: scroll;
+  overflow-x: auto;
+  overflow-y: auto;
+  font-size: 13px;
 }
 
 code {
-  font-size: 10;
+  //  font-size: 13px;
+  color: #9F79EE;
   font-family:'Bitstream Vera Sans Mono','Courier', monospace;
 }
 
