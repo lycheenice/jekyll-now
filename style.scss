@@ -78,6 +78,18 @@ p {
 	text-indent: 30px;
   margin: 15px 0;
   
+  img {
+  text-indent: 0px;
+ // max-width: 100%;
+  padding: 0; 
+  border: 0;
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  text-align: center;
+  vertical-align: middle;
+}
+  
 }
 
 a {
@@ -118,17 +130,6 @@ strong, b {
   font-weight: bold;
 }
 
-img {
-  text-indent: 0px;
- // max-width: 100%;
-  padding: 0; 
-  border: 0;
-  width: 100%;
-  max-width: 600px;
-  height: auto;
-  text-align: center;
-  vertical-align: middle;
-}
 
 // Fixes images in popup boxes from Google Translate
 .gmnoprint img {
