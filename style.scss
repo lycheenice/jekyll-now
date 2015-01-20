@@ -119,6 +119,7 @@ strong, b {
 
 img {
  // max-width: 100%;
+  width: 100%;
   max-width: 740px;
   height: auto;
   vertical-align: middle;
@@ -127,6 +128,7 @@ img {
 // Fixes images in popup boxes from Google Translate
 .gmnoprint img {
  // max-width: none;
+  width: 100%;
   max-width: 740px;
   height: auto;
   vertical-align: middle;
