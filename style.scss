@@ -254,8 +254,9 @@ nav {
 
 .post {
   blockquote {
+    text-indent: 0px;
     margin: 1.8em .8em;
-    border-left: 6px solid $gray;
+    border-left: 5px solid $gray;
     padding: 0.1em 1em;
     color: $gray;
     font-size: 15px;
