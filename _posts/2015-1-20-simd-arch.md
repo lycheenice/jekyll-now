@@ -19,6 +19,7 @@ title: 向量化、SIMD架构：你应该知道些什么
 ADD R8L, AL  ;将两个寄存器R8L、AL中的数相加，结果存放到R8L中
 ADD EAX, 20  ;将寄存器EAX和立即数20相加，结果存放到EAX中
 ```
+C语言代码演示
 ```c++
 #include <stdlib.h>
 #define MAX = 100;
