@@ -25,8 +25,8 @@ body {
 }
 
 .container {
-	background-color: #f5f5f5;
-	-moz-box-shadow: 3px 3px rgba(0,0,0,0.1);
+  background-color: #f5f5f5;
+  -moz-box-shadow: 3px 3px rgba(0,0,0,0.1);
   -webkit-box-shadow: 3px 3px rgba(0,0,0,0.1);
   box-shadow: 5px 5px 5px rgba(0,0,0,0.1);
    
@@ -75,7 +75,7 @@ h4 {
 }
 
 p {
-	text-indent: 30px;
+  text-indent: 2em;
   margin: 15px 0;
 }
 
@@ -117,17 +117,24 @@ strong, b {
   font-weight: bold;
 }
 
+  
+  
+
 img {
+//  text-indent: 0em;
+//  margin: -15px;
+
   margin-left: -30px;
   margin-right: -30px;
 
-  padding: 0; 
-  border: 0;
+ // margin-left: auto;
+ // margin-right: auto;
+
+  padding: 1px; 
+  border: 1px;
 
   max-width: 100%;
   width: auto;
-  height: auto;
-  text-align: center;
   vertical-align: middle;
 }
 
@@ -136,6 +143,7 @@ img {
  // max-width: none;
   //padding: 0;
   //border: 0;
+ 
   width: 100%;
   //max-width: 600px;
   height: auto;
