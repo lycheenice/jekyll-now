@@ -32,7 +32,7 @@ body {
    
   margin: 0 auto;
   max-width: 800px;
-  padding: 30px 30px;
+  padding: 20px 30px;
   width: 100%;
   @include mobile {
      padding: 10px 5px;
@@ -118,8 +118,7 @@ strong, b {
 }
 
 img {
-  //max-width: 100%;
-  max-width: 740px;
+  max-width: 100%;
 }
 
 // Fixes images in popup boxes from Google Translate
