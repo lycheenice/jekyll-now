@@ -37,6 +37,7 @@ body {
   @include mobile {
      padding: 10px 5px;
   }
+  margin-bottom: 10px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -282,11 +283,13 @@ nav {
 .posts > .post {
   padding-bottom: 2em;
   border-bottom: 1px solid $lightGray;
+  margin-bottom: 50px;
 }
 
 .posts > .post:last-child {
   padding-bottom: 1em;
   border-bottom: none;
+  margin-bottom: 50px;
 }
 
 .post {
