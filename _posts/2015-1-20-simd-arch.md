@@ -60,5 +60,8 @@ int main(int argc, char **argv){
 
 ![大尺寸图像](http://p2009c.zbjimg.com/task/2009-12/12/194136/5womb6ci.jpg "大尺寸图像")
 
+**小尺寸图像**
 
-###刷新11
+![小尺寸图像](http://www.rivers2thesea.com/uploads/allimg/c110829/13145SD51U60-52H55.jpg "小尺寸图像")
+
+###刷新12
