@@ -20,53 +20,33 @@ title: 向量化、SIMD架构：你应该知道些什么
 ADD R8L, AL  ;将两个寄存器R8L、AL中的数相加，结果存放到R8L中
 ADD EAX, 20  ;将寄存器EAX和立即数20相加，结果存放到EAX中
 ```
+这些功能可以追溯到早年的Intel处理器，包括最早的8086处理器，这颗芯片于1978年问世，当时最早的IBM个人电脑及兼容机都采用了8086处理器。当时这颗芯片还不具备浮点运算功能。正因为如此，Intel为它增添了浮点协处理器完成浮点操作。直到1989年推出的i486才将独立的浮点处理器集成到一颗芯片上。
 
-C语言代码演示
+![8086](http://upload.wikimedia.org/wikipedia/commons/d/d2/KL_USSR_KP1810BM86.jpg)
 
+![i486](http://upload.wikimedia.org/wikipedia/commons/7/77/Intel_i486_dx4_100mhz_2007_03_27.jpg)
 
-```c++
-#include <stdlib.h>
-#define MAX = 100;
+从那时起，处理器开始采用内建的**浮点单元**处理浮点数学运算。在执行浮点操作前，参与运算的操作数需要提前放置在寄存器中，然后通过汇编指令发起浮点运算。参与浮点运算的是专用寄存器，这些寄存器要比单个浮点数本身大的多。
 
-int main(int argc, char **argv){
-  int val1 = atoi(argv[1]);
-  val1 = val1 * 2;
-  printf("I will get %d %s",val1%MAX, argv[2]);
-  return 0;
-}
-```
+Intel处理器提供三种类型的浮点数。这些浮点数的长度分别为4bytes、8bytes、10bytes，它们依次被命名为**单精度浮点数、双精度浮点数、扩展精度浮点数**。
 
-内嵌代码演示`print("%s")`在里面。
-内嵌文字`我是内嵌`在里面。
+![float/double](http://www.ibm.com/developerworks/cn/java/j-jtp0114/float.gif)
 
+在C++语言中，`float`类型被定义为**单精度浮点数**，`double`类型被定义为**双精度浮点数**。10bytes扩展精度浮点类型并没有被广泛使用，许多高级语言甚至没有对此支持。在C++编译器中以`long-double`的形式提供支持。（但如果仔细研究该类型的大小，你会发现`long-double`实际为16bytes。编译器分配了比原始类型更大的空间去存储数据结构，为的是地址对齐。）
 
-1. 使用像素值固定设置图像左边缘
-2. 百分比设置图像右边缘
-3. 固定值设定图像上边缘
+转而，寄存器的尺寸也越来越大。我们常以bits为单位衡量寄存器。在九十年代中期，**Pentium**处理器拥有的寄存器大小为64bits。这意味着你可以将一个完整的双精度浮点数或两个单精度浮点数放入一个寄存器。下面到了*见证奇迹的时刻*。
 
-- 使用像素值设置图像左边缘
-- 百分比
-- 固定值
+如果你在一个寄存器中存放了两个单精度浮点数，便可以用一条指令同时完成两个浮点运算操作。这就叫做**向量化**。**向量话化**是并行计算的一种，它可以提升程序性能。**向量化**的另一个名字是**SIMD**（发音为*sim-dee*）,全称是**Single Istruction, Multiple Data**。![simd](http://origin.arstechnica.com/cpu/1q00/simd/figure6.gif)Intel公司将SIMD技术应用于自家处理器并命名为**MMX**，这个技术在P5处理器中开始得到应用。![mmx](http://www.vector-logo.net/logo_preview/ai/i/Intel_MMX_big_logo.png)
 
+在过去的20年中，SIMD寄存器的数量和大小在新一代处理器上快速增长。于1999年推出的**Pentium III**，拥有8个128bits（16bytes）大小的SIMD寄存器。意味着单个寄存器中可以存放4个单精度浮点数或者2个双精度浮点数。2011年推出的**Sany Bridge**架构，支持**AVX**技术（Advanced Vector Extensions）,该技术使用256bites大小的SIMD寄存器——支持8单精度或4双精度的浮点数。在2015年，我们很有可能看到支持512bits的AVX-512技术应用于Intel最新生产线。
 
+![avx](http://static.betazeta.com/www.chw.net/up/2012/05/AVX-roadmap-portada.jpg)
 
-下面为Jekyll中使用Markdown语法的贴图效果：
+#####结束语
 
-**效果图**
+通过利用宽向量寄存器，我们可以在一条指令里实现多个操作数的计算，带来性能的大幅提升。下一讲中，我们将看到向量操作的更多细节，以及如何用汇编语言实现向量操作。然后，我们将探索如何在C++中实现向量化操作，编译器又是自动实现的。
 
-![效果图](https://raw.githubusercontent.com/lycheenice/lycheenice.github.io/master/images/jekyll-now-theme-screenshot.jpg "效果图")
+#####本系列其他博客
+[Vectorization: Array Management Made Easier, Vectors vs. Scalar: Moving Packed Data](http://goparallel.sourceforge.net/vectorization-array-management-made-easier/)
 
-**我的头像**
-
-![我的头像](https://raw.githubusercontent.com/lycheenice/lycheenice.github.io/master/images/HappyHead.jpg "我的头像")
-
-**大尺寸图像**
-
-![大尺寸图像](http://p2009c.zbjimg.com/task/2009-12/12/194136/5womb6ci.jpg "大尺寸图像")
-
-**小尺寸图像**
-
-![小尺寸图像](http://www.rivers2thesea.com/uploads/allimg/c110829/13145SD51U60-52H55.jpg "小尺寸图像")
-![小尺寸图像](http://www.rivers2thesea.com/uploads/allimg/c110829/13145SD51U60-52H55.jpg "小尺寸图像")
-
-###刷新15
+[Writing Vectorized Code with C++](http://goparallel.sourceforge.net/writing-vectorized-code-c/)
