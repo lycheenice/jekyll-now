@@ -20,9 +20,10 @@ title: 向量化、SIMD架构：你应该知道些什么
 ADD R8L, AL  ;将两个寄存器R8L、AL中的数相加，结果存放到R8L中
 ADD EAX, 20  ;将寄存器EAX和立即数20相加，结果存放到EAX中
 ```
-这些功能可以追溯到早年的Intel处理器，包括最早的8086处理器，这颗芯片于1978年问世，当时最早的IBM个人电脑及兼容机都采用了8086处理器。当时这颗芯片还不具备浮点运算功能。正因为如此，Intel为它增添了浮点协处理器完成浮点操作。直到1989年推出的i486才将独立的浮点处理器集成到一颗芯片上。
 
 ![8086](http://upload.wikimedia.org/wikipedia/commons/d/d2/KL_USSR_KP1810BM86.jpg)
+
+这些功能可以追溯到早年的Intel处理器，包括最早的8086处理器，这颗芯片于1978年问世，当时最早的IBM个人电脑及兼容机都采用了8086处理器。当时这颗芯片还不具备浮点运算功能。正因为如此，Intel为它增添了浮点协处理器完成浮点操作。直到1989年推出的i486才将独立的浮点处理器集成到一颗芯片上。
 
 ![i486](http://upload.wikimedia.org/wikipedia/commons/7/77/Intel_i486_dx4_100mhz_2007_03_27.jpg)
 
@@ -36,7 +37,11 @@ Intel处理器提供三种类型的浮点数。这些浮点数的长度分别为
 
 转而，寄存器的尺寸也越来越大。我们常以bits为单位衡量寄存器。在九十年代中期，**Pentium**处理器拥有的寄存器大小为64bits。这意味着你可以将一个完整的双精度浮点数或两个单精度浮点数放入一个寄存器。下面到了*见证奇迹的时刻*。
 
-如果你在一个寄存器中存放了两个单精度浮点数，便可以用一条指令同时完成两个浮点运算操作。这就叫做**向量化**。**向量话化**是并行计算的一种，它可以提升程序性能。**向量化**的另一个名字是**SIMD**（发音为*sim-dee*）,全称是**Single Istruction, Multiple Data**。![simd](http://origin.arstechnica.com/cpu/1q00/simd/figure6.gif)Intel公司将SIMD技术应用于自家处理器并命名为**MMX**，这个技术在P5处理器中开始得到应用。![mmx](http://www.vector-logo.net/logo_preview/ai/i/Intel_MMX_big_logo.png)
+![simd](http://origin.arstechnica.com/cpu/1q00/simd/figure6.gif)
+
+如果你在一个寄存器中存放了两个单精度浮点数，便可以用一条指令同时完成两个浮点运算操作。这就叫做**向量化**。**向量话化**是并行计算的一种，它可以提升程序性能。**向量化**的另一个名字是**SIMD**（发音为*sim-dee*）,全称是**Single Istruction, Multiple Data**。Intel公司将SIMD技术应用于自家处理器并命名为**MMX**，这个技术在P5处理器中开始得到应用。
+
+![mmx](http://www.vector-logo.net/logo_preview/ai/i/Intel_MMX_big_logo.png)
 
 在过去的20年中，SIMD寄存器的数量和大小在新一代处理器上快速增长。于1999年推出的**Pentium III**，拥有8个128bits（16bytes）大小的SIMD寄存器。意味着单个寄存器中可以存放4个单精度浮点数或者2个双精度浮点数。2011年推出的**Sany Bridge**架构，支持**AVX**技术（Advanced Vector Extensions）,该技术使用256bites大小的SIMD寄存器——支持8单精度或4双精度的浮点数。在2015年，我们很有可能看到支持512bits的AVX-512技术应用于Intel最新生产线。
 
