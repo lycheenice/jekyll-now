@@ -172,8 +172,12 @@ p img {
 
   //padding: 1px; 
   border-bottom: 10px outset #bbbbbb;
-  vertical-align: middle;
-  text-align: center;
+ // vertical-align: middle;
+ // text-align: center;
+ 
+ @include mobile {
+     max-width: 100%; 
+ }
 }
 
 
