@@ -45,13 +45,13 @@ Intel处理器提供三种类型的浮点数。这些浮点数的长度分别为
 
 在过去的20年中，SIMD寄存器的数量和大小在新一代处理器上快速增长。于1999年推出的**Pentium III**，拥有8个128bits（16bytes）大小的SIMD寄存器。意味着单个寄存器中可以存放4个单精度浮点数或者2个双精度浮点数。2011年推出的**Sany Bridge**架构，支持**AVX**技术（Advanced Vector Extensions）,该技术使用256bites大小的SIMD寄存器——支持8单精度或4双精度的浮点数。在2015年，我们很有可能看到支持512bits的AVX-512技术应用于Intel最新生产线。
 
-![avx](http://static.betazeta.com/www.chw.net/up/2012/05/AVX-roadmap-portada.jpg)
+![avx](http://cdn.wccftech.com/wp-content/uploads/2014/09/Intel-Xeon-E5-2600-V3-Haswell-EP-AVX-2-Instruction-Set.jpg)
 
 #####结束语
 
 通过利用宽向量寄存器，我们可以在一条指令里实现多个操作数的计算，带来性能的大幅提升。下一讲中，我们将看到向量操作的更多细节，以及如何用汇编语言实现向量操作。然后，我们将探索如何在C++中实现向量化操作，编译器又是自动实现的。
 
 #####本系列其他博客
-[Vectorization: Array Management Made Easier, Vectors vs. Scalar: Moving Packed Data](http://goparallel.sourceforge.net/vectorization-array-management-made-easier/)
+>[1] [Vectorization: Array Management Made Easier, Vectors vs. Scalar: Moving Packed Data](http://goparallel.sourceforge.net/vectorization-array-management-made-easier/)
 
-[Writing Vectorized Code with C++](http://goparallel.sourceforge.net/writing-vectorized-code-c/)
+>[2] [Writing Vectorized Code with C++](http://goparallel.sourceforge.net/writing-vectorized-code-c/)
