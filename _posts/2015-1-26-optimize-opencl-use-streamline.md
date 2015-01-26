@@ -66,8 +66,56 @@ ND Range——OpenCL kernel的全部工作负载，负责划分workgroups并将�
 
 ###硬件计数器
 
+为了得到上述信息，我们需要借助GPU的硬件计数器信息。这些信息可以指出这些核心的哪些部分执行了哪些工作。继而，帮助我们确定性能瓶颈。
 
+通过Streamline我们可以得到大量的counter信息。一些counter是针对于单个核心的，可以让你观察并理解管线内部的工作情况。一些counter是统计全局信息的，例如active cycles数量。
 
+我们可以利用DS-5访问这些counters信息，下面让我们来看一些Streamline的工作截图。
+
+![streamline-1](http://community.arm.com/servlet/JiveServlet/showImage/38-4357-12108/pic4.jpg)
+
+这是一幅完整的系统截图。最上面一行的绿色柱状图描述了CPU activity，下一行的蓝色柱状图为GPU activity，红色柱状图为GPU中专用计算管线的activity。
+
+![streamline-2](http://community.arm.com/servlet/JiveServlet/showImage/38-4357-12110/crop.jpg)
+
+我们可以采用各种手段去定制这些曲线。截图中显示的并不是最细节的信息，你可以根据自己需要统计的信息去选择观察窗口的范围。根据需要，Streamline支持查看特定线程的CPU、GPU信息。
+
+![streamline-3](http://community.arm.com/servlet/JiveServlet/downloadImage/38-4357-12111/907-373/crop2.jpg)
+
+在这张图片上，你可以看到有关L2 Cache的统计信息，它由蓝色的曲线表示。在最下方还能看到计算管线的信息。我们可以向下滚动观察更多的信息或者通过放大看到更多的细节。
+
+当问题集中在特定应用的时候，DS-5 Streamline往往可以很快的显示出来。下一张图片展示了计算机视觉应用运行在CPU和OpenCL GPU上的统计信息。  It would run fine for a number of seconds, and then seemingly randomly would suddenly slow down significantly, with the processing framerate dropping in half。
+
+![streamline-4](http://community.arm.com/servlet/JiveServlet/showImage/38-4357-12112/crop3.jpg)
+
+You can see the trace has captured the moment this slowdown happened. To the left of the timeline marker we can see the CPU and GPU working reasonably efficiently.  Then this suddenly lengthens out, we see a much bigger gap between the pockets of GPU work, and the CPU activity has grown significantly.  The red bars in amongst the green bars at the top represent increased system activity on the platform.  This trace and others like it were invaluable in showing that the initial problem with this application lay with how it was streaming and processing video.
+ 
+One of the benefits of having the whole system on view is that we get a holistic picture of the performance of the application across multiple processors and processor types, and this was particularly useful in this example.
+
+![streamline-5](http://community.arm.com/servlet/JiveServlet/showImage/38-4357-12113/crop4.jpg)
+
+Here we’ve scrolled down the available counters in the timeline to show some others – in particular the various activities within the Mali GPU’s cores.  You can see counter lines for a number of things, but in particular the arithmetic, load-store and texture pipes – along with cache hits, misses etc.  Hovering over any of these graphs at any point in the timeline will show actual counter numbers.
+
+![streamline-6](http://community.arm.com/servlet/JiveServlet/showImage/38-4357-12114/crop5.jpg)
+
+Here for example we can see the load/store pipe instruction issues at the top, and actual instructions on the bottom.  The difference in this case is a measure of the load/store re-issues necessary at this point in the timeline – in itself a measure of efficiency of memory accesses.  What we are seeing at this point represents a reasonably healthy position in this regard.
+ 
+The next trace is from the same application we were looking at a little earlier, but this time with a more complex OpenCL filter chain enabled.
+
+![streamline-7](http://community.arm.com/servlet/JiveServlet/showImage/38-4357-12115/crop6.jpg)
+
+If we look a little closer we can see how efficiently the application is running.  We’ve expanded the CPU trace – the green bars at the top – to show both the cores we had on this platform.  Remember the graphics elements are the blue bars, with the image processing filters represented by the red.
+
+![streamline-8](http://community.arm.com/servlet/JiveServlet/showImage/38-4357-12116/mag.jpg)
+
+Looking at the cycle the application is going through for each frame:
+ 
+1. Firstly there is CPU activity leading up to the compute job.
+2. Whilst the compute job then runs, the CPU is more or less idle.
+3. With the completion of the compute filters, the CPU does a small amount of processing, setting up the graphics render.
+4. The graphics job then runs, rendering the frame before the sequence starts again.
+ 
+So in a snapshot we have this holistic and heterogeneous overview of the application and how it is running.  Clearly we could aim for much better performance here by pipelining the workload to avoid the idle gaps we see.  There is no reason why the CPU and GPU couldn’t be made to run more efficiently in parallel, and this trace shows that clearly.
 
 
 
