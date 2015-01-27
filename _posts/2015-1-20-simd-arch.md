@@ -3,7 +3,7 @@ layout: post
 title: 向量化、SIMD架构：你应该知道些什么
 ---
 
-*本文为译文，原文链[在此](http://goparallel.sourceforge.net/vectorization-simd-architecture-need-know/)*
+*本文为译文，原文链接[在此](http://goparallel.sourceforge.net/vectorization-simd-architecture-need-know/)*
 
 >**并行化编程的一种形式是向量化，这种形式允许用单条指令实现多个数据的操作。在这一系列的第一篇文章里，Jeff Cogswell将带你走进Intel处理器的向量化世界。**
 
