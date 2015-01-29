@@ -162,9 +162,11 @@ Finally, we look at cache usage.  If this is working badly we would see many L/S
 This has only been a brief look at the world of compute optimization with Mali GPUs.  There’s a lot more out there.  To get you going I’ve included some links below to malideveloper.arm.com for all sorts of useful guides, developer videos, papers and more.
 
 ###延伸内容
-> Download DS-5 Streamline: [ARM DS-5 Streamline - Mali Developer Center Mali Developer Center](http://malideveloper.arm.com/develop-for-mali/tools/software-tools/arm-development-studio-5/)
-> Mali-T600 Series GPU OpenCL Developer Guide: [Mali-T600 Series GPU OpenCL Developer Guide - Mali Developer Center Mali Developer Center](http://malideveloper.arm.com/develop-for-mali/tutorials-developer-guides/developer-guides/mali-t600-series-gpu-opencl-developer-guide/)
-> GPU Compute, OpenCL and RenderScript [Tutorials](http://malideveloper.arm.com/develop-for-mali/opencl-renderscript-tutorials/)
+> - Download DS-5 Streamline: [ARM DS-5 Streamline - Mali Developer Center Mali Developer Center](http://malideveloper.arm.com/develop-for-mali/tools/software-tools/arm-development-studio-5/)
+
+> - Mali-T600 Series GPU OpenCL Developer Guide: [Mali-T600 Series GPU OpenCL Developer Guide - Mali Developer Center Mali Developer Center](http://malideveloper.arm.com/develop-for-mali/tutorials-developer-guides/developer-guides/mali-t600-series-gpu-opencl-developer-guide/)
+
+> - GPU Compute, OpenCL and RenderScript [Tutorials](http://malideveloper.arm.com/develop-for-mali/opencl-renderscript-tutorials/)
 
 ####未完待续 >>> 
 
