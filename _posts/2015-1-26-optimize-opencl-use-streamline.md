@@ -109,18 +109,20 @@ ND Range——OpenCL kernel的全部工作负载，负责划分workgroups并将�
 ![streamline-8](http://community.arm.com/servlet/JiveServlet/showImage/38-4357-12116/mag.jpg)
 
 下面，我们来观察一个完成的单帧周期：
-1. 首先，CPU进入高负载状态，引导下面的计算工作。
-2. 紧接着，GPU进入活跃状态，开始计算工作，CPU进入相对空闲期。
-3. 随着图像滤波的完成，CPU又迎来少量的工作任务，设置图像渲染所需参数。
-4. 最后，GPU进行该帧图像渲染工作，直到序列中的下一帧图像到来
 
-So in a snapshot we have this holistic and heterogeneous overview of the application and how it is running.  Clearly we could aim for much better performance here by pipelining the workload to avoid the idle gaps we see.  There is no reason why the CPU and GPU couldn’t be made to run more efficiently in parallel, and this trace shows that clearly.
+> 1. 首先，CPU进入高负载状态，为GPU计算做准备。
+> 2. 紧接着，GPU进入活跃状态，开始计算工作，CPU进入相对空闲期。
+> 3. 随着图像滤波的完成，CPU又迎来少量的工作任务，设置图像渲染所需参数。
+> 4. 最后，GPU进行该帧图像渲染工作，直到序列中的下一帧图像到来
+
+在这个截图中我们从整体上了解了应用在异构平台上运行的全过程。明确了优化的目标——将工作负载流水化以减少上面看到的空闲间隙。这一点在trace信息中很容易看出，而用一般方法是很难找到原因的。
 
 ###OpenCL Timeline
-There are many features of DS-5 Streamline, and I’m not going to attempt to go into them all.  But there’s one in particular I’d like to show you that links the latest Mali GPU driver release to the latest version of DS-5 (v5.20), and that’s the OpenCL Timeline.
+DS-5 Streamline有很多特性，这里并不打算向大家一一介绍。但有一个功能我认为很有必要展示一下，这就是OpenCL Timeline，该特性要配合最新的Mali GPU驱动和DS-5 v5.20版本使用。
 
 ![opencl timeline](http://community.arm.com/servlet/JiveServlet/showImage/38-4357-12122/pic1.jpg)
 
+这幅图片是我启用了OpenCL Timeliness特性之后的截图——显示在屏幕底部的水平方向上。它展示了每个在GPU上云心过的OpenCL kernel信息，
 In this image we’ve just enabled the feature – it’s the horizontal area at the bottom.  This shows the running of individual OpenCL kernels, the time they take to run, any overhead of sync-points between CPU and GPU etc.
 
 ![opencl details](http://community.arm.com/servlet/JiveServlet/showImage/38-4357-12118/crop7.jpg)
@@ -166,7 +168,7 @@ This has only been a brief look at the world of compute optimization with Mali G
 
 > - Mali-T600 Series GPU OpenCL Developer Guide: [Mali-T600 Series GPU OpenCL Developer Guide - Mali Developer Center Mali Developer Center](http://malideveloper.arm.com/develop-for-mali/tutorials-developer-guides/developer-guides/mali-t600-series-gpu-opencl-developer-guide/)
 
-> - GPU Compute, OpenCL and RenderScript [Tutorials](http://malideveloper.arm.com/develop-for-mali/opencl-renderscript-tutorials/)
+> - GPU Compute, OpenCL and RenderScript:  [Tutorials](http://malideveloper.arm.com/develop-for-mali/opencl-renderscript-tutorials/)
 
-####未完待续 >>> 
+####未完待续 [>>>](http://lycheenice.github.io/optimize-opencl-use-streamline/) 
 
